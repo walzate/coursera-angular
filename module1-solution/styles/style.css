@@ -1,0 +1,12 @@
+.success{
+  color: green;
+}
+.failure{
+  color : red;
+}
+.inputBorderSuccess{
+  border:1px solid green;
+}
+.inputBorderFailure{
+  border:1px solid red;
+}
