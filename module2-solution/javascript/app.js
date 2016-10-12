@@ -29,7 +29,12 @@ function AlreadyBoughtController(ShoppingListCheckOffService){
 
 function ShoppingListCheckOffService(){
   var service = this;
-  var toBuyItems = [{ name: "cookies", quantity: 10 }, { name: "snacks", quantity: 20 }];
+  var toBuyItems = [{ name: "cookies", quantity: 10 },
+                    { name: "snacks", quantity: 20 },
+                    { name: "candies", quantity: 100 },
+                    { name: "cakes", quantity: 12 },
+                    { name: "sodas", quantity: 11 },
+                  ];
   var boughtItems = [];
   var itemToMove;
 
