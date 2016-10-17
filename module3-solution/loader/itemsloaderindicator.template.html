@@ -1,1 +1,19 @@
-<div class="loader"></div>
+  <div class="container">
+    <!-- ng-show="items.foundItemsArray.length >0 " -->
+    <table ng-show="items.foundItemsArray.length >0" class ="table-striped">
+      <tr>
+        <th>Name</th>
+        <th>Short Name</th>
+        <th>Description</th>
+      <th>
+      <tr ng-repeat="item in items.foundItemsArray">
+        <td>{{item.name}}</td>
+        <td>{{item.short_name}}</td>
+        <td>{{item.description}}</td>
+        <td><button class="btn btn-danger" ng-click="items.onRemove({index: $index});">Don't want this one!</button></td>
+      </tr>
+    </table>
+    <div ng-show="items.foundItemsArray.length <= 0 " class="alert alert-danger">
+      Nothing found
+    </div>
+  </div>

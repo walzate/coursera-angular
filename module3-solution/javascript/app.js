@@ -5,39 +5,28 @@
 angular.module('NarrowItDownApp',[])
 .controller('NarrowItDownController', NarrowItDownController )
 .service('MenuSearchService', MenuSearchService)
-/*.directive('foundItems', FoundItemsDirective);
+.directive('foundItems', FoundItemsDirective);
 
 function FoundItemsDirective() {
   var ddo = {
     templateUrl: 'loader/itemsloaderindicator.template.html',
     scope: {
-      items: '<',
-      myTitle: '@title',
-      badRemove: '=',
+      foundItemsArray: '<',
       onRemove: '&'
     },
     controller: FoundItemsDirectiveController,
-    controllerAs: 'list',
+    controllerAs: 'items',
     bindToController: true
   };
 
   return ddo;
-}
+};
 
-function FoundItemsDirectiveController() {
-  var list = this;
-
-  list.cookiesInList = function () {
-    for (var i = 0; i < list.items.length; i++) {
-      var name = list.items[i].name;
-      if (name.toLowerCase().indexOf("cookie") !== -1) {
-        return true;
-      }
-    }
-
-    return false;
-  };
-}*/
+FoundItemsDirectiveController.$inject = ["MenuSearchService"];
+function FoundItemsDirectiveController(MenuSearchService) {
+  var items = this;
+  
+};
 
 // Properly inject $scope into the controller using the $inject property
 // (shown how in video lecture) to make sure to protect your code from minification.
@@ -48,7 +37,8 @@ function NarrowItDownController(MenuSearchService){
 
   narrow.getMatchedMenuItems = function (){
     MenuSearchService.getMatchedMenuItems(narrow.searchTerm);
-    narrow.foundItems = MenuSearchService.getFoundItems();
+    narrow.foundItemsArray = MenuSearchService.getFoundItemsArray();
+    console.log(narrow.foundItemsArray);
   };
 
   narrow.removeItem = function(index){
@@ -60,10 +50,10 @@ function NarrowItDownController(MenuSearchService){
 MenuSearchService.$inject = ['$http']
 function MenuSearchService($http){
   var service = this;
-  var foundItems = [];
+  var foundItemsArray = [];
 
   service.getMatchedMenuItems = function (searchTerm){
-    foundItems = [];
+    foundItemsArray = [];
 
     var promise = $http({
       method: "GET",
@@ -75,7 +65,7 @@ function MenuSearchService($http){
         for (var i = 0; i<menuItems.length ; i++){
           item = menuItems[i];
           if(item.description.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1){
-            foundItems.push(item);
+            foundItemsArray.push(item);
           }
           i++;
         }
@@ -85,12 +75,12 @@ function MenuSearchService($http){
     return promise;
   }
 
-  service.getFoundItems = function (){
-    return foundItems;
+  service.getFoundItemsArray = function (){
+    return foundItemsArray;
   }
 
   service.removeItem = function (index){
-    foundItems.splice(index, 1);
+    foundItemsArray.splice(index, 1);
   }
 };
 })();
