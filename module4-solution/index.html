@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="NarrowItDownApp">
+<html lang="en" ng-app="MyApp">
   <head>
     <title>Narrow Down Your Menu Choice</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,22 +10,38 @@
     <script src="lib/angular.min.js"></script>
     <script src="lib/angular-ui-router.min.js"></script>
 
-    <!-- Modules -->
-    <script src="src/app.js"></script>
-  </head>
-  <body ng-controller="NarrowItDownController as narrow">
-     <div class="container" >
-      <h1>Narrow Down Your Chinese Menu Choice</h1>
 
-      <div class="form-group">
+
+    <!-- Modules -->
+    <script src="src/data.module.js"></script>
+    <script src="src/menuapp.module.js"></script>
+
+
+
+
+    <!--<script src="src/categories.component.js"></script>
+    <script src="src/items.component.js"></script>-->
+
+
+    <script src="src/menudata.service.js"></script>
+
+
+
+  </head>
+  <body >
+     <div class="container" >
+      <h1>Module 4 Coding Assignment</h1>
+
+      <!--<div class="form-group">
         <input type="text" ng-model="narrow.searchTerm" placeholder="search term" class="form-control">
       </div>
       <div class="form-group narrow-button">
         <button class="btn btn-primary" ng-click="narrow.getMatchedMenuItems()">Narrow It Down For Me!</button>
       </div>
 
-    </div>
+    </div>-->
+
     <!-- found-items should be implemented as a component -->
-    <found-items found-items-array="narrow.foundItemsArray" on-remove="narrow.removeItem(index)"></found-items>
+    <!-- <found-items found-items-array="narrow.foundItemsArray" on-remove="narrow.removeItem(index)"></found-items> -->
   </body>
 </html>
