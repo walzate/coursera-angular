@@ -3,10 +3,15 @@
   <head>
     <title>Narrow Down Your Menu Choice</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styles/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/styles.css">
-    <script src="javascript/angular.min.js"></script>
-    <script src="javascript/app.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Libraries -->
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
+
+    <!-- Modules -->
+    <script src="src/app.js"></script>
   </head>
 <body ng-controller="NarrowItDownController as narrow">
    <div class="container" >
@@ -22,12 +27,5 @@
   </div>
   <!-- found-items should be implemented as a component -->
   <found-items found-items-array="narrow.foundItemsArray" on-remove="narrow.removeItem(index)"></found-items>
-
-    <!-- Libraries -->
-    <script src="lib/angular.min.js"></script>
-    <script src="lib/angular-ui-router.min.js"></script>
-
-    <!-- Modules -->
-    <script src="src/app.js"></script>
 </body>
 </html>
