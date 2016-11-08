@@ -15,22 +15,7 @@ function NarrowItDownController(MenuDataService, $stateParams){
       narrow.allCategoriesArray = result.data;
       console.log("allCategoriesArray: "+narrow.allCategoriesArray);
   });
-    console.log("Entró");
-
-    //if(undefined != $stateParams.itemShortName){
-      //console.log($stateParams.itemShortName);
-      var promiseItems=MenuDataService.getItemsForCategory('L');
-
-      narrow.itemsForCategoryArray = [];
-      promiseItems.then(function (result) {
-          narrow.itemsForCategoryArray = result.data.menu_items;
-          console.log("itemsForCategoryArray: "+narrow.itemsForCategoryArray);
-      });
-    //}
-
-
-
-
+    
 }
 
 })();

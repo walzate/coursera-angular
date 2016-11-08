@@ -16,6 +16,10 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
       url: '/categories',
       templateUrl: 'src/categories.html'
     })
+    .state('home', {
+      url: '/home',
+      templateUrl: '/index.html'
+    })
     .state('items', {
       url: '/items/{itemShortName}',
       templateUrl: 'src/items.html',
