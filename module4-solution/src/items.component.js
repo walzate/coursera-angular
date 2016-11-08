@@ -12,18 +12,11 @@ angular.module('MyApp')
     }
 });
 
-ItemsComponentController.$inject = ["MenuDataService"];
-function ItemsComponentController(MenuDataService) {
-  var itemsDetail = this;
-
-  //console.log(itemId);
-  var promiseItems=MenuDataService.getItemsForCategory("L");
-  itemsDetail.itemsForCategoryArray = [];
-  promiseItems.then(function (result) {
-      itemsDetail.itemsForCategoryArray = result.data.menu_items;
-      console.log("itemsForCategoryArray: "+itemsDetail.itemsForCategoryArray);
-  });
-
+ItemsComponentController.$inject = ["MenuDataService", '$stateParams'];
+function ItemsComponentController(MenuDataService, $stateParams) {
+  console.log("ItemsComponentController");
+  var $ctrl = this;
+  console.log("Es: " + $stateParams.itemShortName);
 };
 
 })();
