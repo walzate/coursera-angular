@@ -23,11 +23,10 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     .state('items', {
       url: '/items/{itemShortName}',
       templateUrl: 'src/items.html',
-      //controller: 'ItemsComponentController as itemDetail',
+      controller: 'ItemsComponentController as itemsController',
       resolve: {
-        itemId: ['$stateParams', function ($stateParams){
-          console.log("$stateParams.itemShortName "+$stateParams.itemShortName);
-          return $stateParams.itemShortName;
+        items: ['MenuDataService', '$stateParams', function(MenuDataService, $stateParams) {
+          return MenuDataService.getItemsForCategory($stateParams.itemShortName);
         }]
       }
     })
