@@ -10,28 +10,30 @@
     <script src="lib/angular.min.js"></script>
     <script src="lib/angular-ui-router.min.js"></script>
 
-
-
     <!-- Modules -->
     <script src="src/data.module.js"></script>
     <script src="src/menuapp.module.js"></script>
 
+    <!-- 'Categories' module artifacts -->
+    <script src="src/categories.component.js"></script>
+    <script src="src/items.component.js"></script>
 
+    <script src="src/items.controller.js"></script>
 
-
-    <!--<script src="src/categories.component.js"></script>
-    <script src="src/items.component.js"></script>-->
-
+    <!-- Routes -->
+    <script src="src/routes.js"></script>
 
     <script src="src/menudata.service.js"></script>
 
 
 
   </head>
-  <body >
+  <body ng-controller="NarrowItDownController as narrow">
      <div class="container" >
-      <h1>Module 4 Coding Assignment</h1>
+      <h1>Welcome to our Restaurant</h1>
+      <a ui-sref="categories" ui-sref-active="activeTab">Categories</a>
 
+      <ui-view></ui-view>
       <!--<div class="form-group">
         <input type="text" ng-model="narrow.searchTerm" placeholder="search term" class="form-control">
       </div>

@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Short Name</th>
+    <th>Name</th>
+    <th>Price small</th>
+    <th>Price large</th>
+    <th>Small portion name</th>
+    <th>Large portion name</th>
+  <th>
+    <tr ng-repeat="item in $ctrl.values">
+      <td>{{item.id}}</td>
+      <td>{{item.short_name}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.price_small}}</td>
+      <td>{{item.price_large}}</td>
+      <td>{{item.small_portion_name}}</td>
+      <td>{{item.large_portion_name}}</td>
+      <!-- <td><button class="btn btn-danger" ng-click="items.onRemove({index: $index});">Don't want this one!</button></td> -->
+    </tr>
+</table>
