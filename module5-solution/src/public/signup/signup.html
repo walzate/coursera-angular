@@ -1,25 +1,84 @@
 <div class="container">
   <h1>Sign Up!</h1>
+  <form name="signupForm" novalidate>
 
-  <div class="form-group">
-    <label for="firstName">First name:</label>
-    <input type="text" class="form-control" id="firstName">
-  </div>
-  <div class="form-group">
-    <label for="lastName">Last name:</label>
-    <input type="password" class="form-control" id="lastName">
-  </div>
-  <div class="form-group">
-    <label for="emailAddress">Email address:</label>
-    <input type="password" class="form-control" id="emailAddress">
-  </div>
-  <div class="form-group">
-    <label for="phoneNumber">Phone number:</label>
-    <input type="password" class="form-control" id="phoneNumber">
-  </div>
-  <div class="form-group">
-    <label for="menuNumber">Menu number:</label>
-    <input type="password" class="form-control" id="menuNumber">
-  </div>
-  <button type="submit" class="btn btn-default">Sign up</button>
+    <div class="form-group">
+      <label for="firstName">First name:</label>
+      <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First name"
+          ng-model="signUpCtrl.user.firstName"
+          required
+          minlength="4"
+          ng-maxlength="10">
+    </div>
+    {{signUpCtrl.user.firstName}}
+    <span
+      ng-if="(signupForm.firstName.$error.minlength || signupForm.firstName.$error.required) && signupForm.firstName.$touched">
+      First name must be at least 4 characters long
+    </span>
+    <span ng-if="signupForm.firstName.$error.maxlength && signupForm.firstName.$touched">
+      First name must not be longer than 10 characters
+    </span>
+
+    <div class="form-group">
+      <label for="lastName">Last name:</label>
+      <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last name"
+      ng-model="signUpCtrl.user.lastName"
+      required
+      minlength="4"
+      ng-maxlength="10">
+    </div>
+    {{signUpCtrl.user.lastName}}
+    <span
+      ng-if="(signupForm.lastName.$error.minlength || signupForm.lastName.$error.required) && signupForm.lastName.$touched">
+      Last Name must be at least 4 characters long
+    </span>
+    <span ng-if="signupForm.firstname.$error.maxlength && signupForm.firstname.$touched">
+      Last Name must not be longer than 10 characters
+    </span>
+
+
+    <div class="form-group">
+      <label for="emailAddress">Email address:</label>
+      <input type="email" class="form-control" id="emailAddress" name="emailAddress" placeholder="Email address"
+      ng-model="signUpCtrl.user.emailAddress"
+      required>
+    </div>
+    {{signUpCtrl.user.emailAddress}}
+    <span ng-if="signupForm.emailAddress.$invalid && signupForm.emailAddress.$touched">
+        Must be a valid email address: handle@domain format
+    </span>
+
+    <div class="form-group">
+      <label for="phoneNumber">Phone number:</label>
+      <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone ###-###-####"
+      ng-model="signUpCtrl.user.phoneNumber"
+      pattern="(\d{3})-(\d{3})-(\d{4})">
+    </div>
+    {{signUpCtrl.user.phoneNumber}}
+    <span ng-if="signupForm.phoneNumber.$invalid && signupForm.phoneNumber.$touched">
+      Phone number must be in the format ###-###-####.
+    </span>
+
+    <div class="form-group">
+      <label for="menuNumber">Menu number:</label>
+      <input type="text" class="form-control" id="menuNumber" name="menuNumber" placeholder="Menu number"
+      ng-model="signUpCtrl.user.menuNumber"
+      required>
+    </div>
+    {{signUpCtrl.user.menuNumber}}
+
+    <button class="btn btn-default"
+          ng-disabled="signupForm.$invalid"
+          ng-click="signUpCtrl.submit()">Sign up</button>
+    <div style="margin-top: 10px;">
+      Form valid? {{ signupForm.$valid }}
+    </div>
+  </form>
+  <div id="info">
+      First name: {{signUpCtrl.user.firstName}} <br>
+      Last name: {{signUpCtrl.user.lastName}} <br>
+      Email: {{signUpCtrl.user.emailAddress}} <br>
+      Phone: {{signUpCtrl.user.phoneNumber}} <br/>
+      Menu number: {{signUpCtrl.user.menuNumber}}
+    </div>
 </div>
