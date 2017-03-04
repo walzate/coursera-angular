@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Sign Up!</h1>
-  <form name="signupForm" novalidate>
+  <form name="signupForm" novalidate ng-if="!signUpCtrl.infoSaved">
 
     <div class="form-group">
       <label for="firstName">First name:</label>
@@ -10,7 +10,7 @@
           minlength="4"
           ng-maxlength="10">
     </div>
-    {{signUpCtrl.user.firstName}}
+
     <span
       ng-if="(signupForm.firstName.$error.minlength || signupForm.firstName.$error.required) && signupForm.firstName.$touched">
       First name must be at least 4 characters long
@@ -27,7 +27,7 @@
       minlength="4"
       ng-maxlength="10">
     </div>
-    {{signUpCtrl.user.lastName}}
+
     <span
       ng-if="(signupForm.lastName.$error.minlength || signupForm.lastName.$error.required) && signupForm.lastName.$touched">
       Last Name must be at least 4 characters long
@@ -43,7 +43,7 @@
       ng-model="signUpCtrl.user.emailAddress"
       required>
     </div>
-    {{signUpCtrl.user.emailAddress}}
+
     <span ng-if="signupForm.emailAddress.$invalid && signupForm.emailAddress.$touched">
         Must be a valid email address: handle@domain format
     </span>
@@ -54,7 +54,7 @@
       ng-model="signUpCtrl.user.phoneNumber"
       pattern="(\d{3})-(\d{3})-(\d{4})">
     </div>
-    {{signUpCtrl.user.phoneNumber}}
+
     <span ng-if="signupForm.phoneNumber.$invalid && signupForm.phoneNumber.$touched">
       Phone number must be in the format ###-###-####.
     </span>
@@ -64,21 +64,17 @@
       <input type="text" class="form-control" id="menuNumber" name="menuNumber" placeholder="Menu number"
       ng-model="signUpCtrl.user.menuNumber"
       required>
+      <span ng-if="signUpCtrl.menuItemDoesntExist">
+        No such menu number exists
+      </span>
     </div>
-    {{signUpCtrl.user.menuNumber}}
 
     <button class="btn btn-default"
           ng-disabled="signupForm.$invalid"
           ng-click="signUpCtrl.submit()">Sign up</button>
-    <div style="margin-top: 10px;">
-      Form valid? {{ signupForm.$valid }}
-    </div>
+
   </form>
-  <div id="info">
-      First name: {{signUpCtrl.user.firstName}} <br>
-      Last name: {{signUpCtrl.user.lastName}} <br>
-      Email: {{signUpCtrl.user.emailAddress}} <br>
-      Phone: {{signUpCtrl.user.phoneNumber}} <br/>
-      Menu number: {{signUpCtrl.user.menuNumber}}
-    </div>
+  <span ng-if="signUpCtrl.infoSaved">
+    Your information has been saved.
+  </span>
 </div>

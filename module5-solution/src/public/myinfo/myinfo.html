@@ -1,26 +1,17 @@
-<div class="container">
-  <h1>My Info!</h1>
-  <p>Your registered information is:</p>
-
-  <div class="form-group">
-    <label for="firstName">First name:</label>
-    <input type="text" class="form-control" id="firstName">
-  </div>
-  <div class="form-group">
-    <label for="lastName">Last name:</label>
-    <input type="password" class="form-control" id="lastName">
-  </div>
-  <div class="form-group">
-    <label for="emailAddress">Email address:</label>
-    <input type="password" class="form-control" id="emailAddress">
-  </div>
-  <div class="form-group">
-    <label for="phoneNumber">Phone number:</label>
-    <input type="password" class="form-control" id="phoneNumber">
-  </div>
-  <div class="form-group">
-    <label for="menuNumber">Menu number:</label>
-    <input type="password" class="form-control" id="menuNumber">
-  </div>
-  <button type="submit" class="btn btn-default">Sign up</button>
+<form name="myinfoForm" novalidate>
+<div id="info" ng-if="myInfoCtrl.user">
+    First name: {{myInfoCtrl.user.firstName}} <br>
+    Last name: {{myInfoCtrl.user.lastName}} <br>
+    Email: {{myInfoCtrl.user.emailAddress}} <br>
+    Phone: {{myInfoCtrl.user.phoneNumber}} <br/>
+    Menu number: {{myInfoCtrl.user.menuNumber}} <br/>
+    <menu-item ng-repeat="menuItem in myInfoCtrl.user.menuItem"
+               menu-item="menuItem">
+    </menu-item>
 </div>
+
+<span ng-if="!myInfoCtrl.user">
+  Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!<a>
+</span>
+
+</form>
