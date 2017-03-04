@@ -1,17 +1,19 @@
-<form name="myinfoForm" novalidate>
-<div id="info" ng-if="myInfoCtrl.user">
-    First name: {{myInfoCtrl.user.firstName}} <br>
-    Last name: {{myInfoCtrl.user.lastName}} <br>
-    Email: {{myInfoCtrl.user.emailAddress}} <br>
-    Phone: {{myInfoCtrl.user.phoneNumber}} <br/>
-    Menu number: {{myInfoCtrl.user.menuNumber}} <br/>
-    <menu-item ng-repeat="menuItem in myInfoCtrl.user.menuItem"
-               menu-item="menuItem">
-    </menu-item>
+<div class="container">
+  <form name="myinfoForm" novalidate>
+  <div id="info" ng-if="myInfoCtrl.user">
+      First name: {{myInfoCtrl.user.firstName}} <br>
+      Last name: {{myInfoCtrl.user.lastName}} <br>
+      Email: {{myInfoCtrl.user.emailAddress}} <br>
+      Phone: {{myInfoCtrl.user.phoneNumber}} <br/>
+      Menu number: {{myInfoCtrl.user.menuNumber}} <br/>
+      <menu-item
+                 menu-item="myInfoCtrl.user.menuItem">
+      </menu-item>
+  </div>
+
+  <span ng-if="!myInfoCtrl.user">
+    Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!<a>
+  </span>
+
+  </form>
 </div>
-
-<span ng-if="!myInfoCtrl.user">
-  Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!<a>
-</span>
-
-</form>

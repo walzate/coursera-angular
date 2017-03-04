@@ -17,17 +17,31 @@ function SignUpController(MenuService){
   ctrl.submit = function () {
     console.log ("Submit");
     console.log (ctrl.user);
-    
-    ctrl.user.menuItem = MenuService.getMenuItem(ctrl.user.menuNumber);
-    console.log("ctrl.user.menuItem");
-    console.log(ctrl.user.menuItem);
-    if(!ctrl.user.menuItem.short_name){
+
+    var promise = MenuService.getMenuItem(ctrl.user.menuNumber);
+
+    promise.then(function (response) {
+      ctrl.user.menuItem = response.data;
+      console.log(ctrl.user.menuItem);
+      console.log("ctrl.user.menuItem");
+      console.log(ctrl.user.menuItem);
+      if(!ctrl.user.menuItem.short_name){
+        ctrl.menuItemDoesntExist = true;
+        ctrl.infoSaved = false;
+      }else{
+        MenuService.setUser(ctrl.user);
+        ctrl.infoSaved = true;
+      }
+    }).catch(function(e){
       ctrl.menuItemDoesntExist = true;
       ctrl.infoSaved = false;
-    }else{
-      MenuService.setUser(ctrl.user);
-      ctrl.infoSaved = true;
-    }
+       console.log("got an error in initial processing",e);
+       throw e; // rethrow to not marked as handled,
+                // in $q it's better to `return $q.reject(e)` here
+    })
+
+
+
   };
 }
 })();

@@ -46,14 +46,7 @@ function MenuService($http, ApiPath) {
     console.log ("User service: "+ shortName)
 
     return $http.get(ApiPath + '/menu_items/'+shortName+'.json', config)
-    .then(function (response) {
-      return response.data;
-    })
-    .catch(function(error){
-      console.log("Error ", error);
-      return false;
-      throw e;
-    });
+    ;
   };
 
 }
